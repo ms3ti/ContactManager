@@ -1,0 +1,1 @@
+Place required SAP libraries in this folder. Do not delete this file.

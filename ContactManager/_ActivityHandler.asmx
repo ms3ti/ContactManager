@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="c#" Codebehind="_ActivityActionsHandler.asmx.cs" Class="ssContactManager.Processes.Handling.ActivityActionsHandler" %>

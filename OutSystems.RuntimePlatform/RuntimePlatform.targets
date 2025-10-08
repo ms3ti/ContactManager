@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup>
+    <AssemblyName>OutSystems.HubEdition.RuntimePlatform</AssemblyName>
+    <RootNamespace>OutSystems.HubEdition.RuntimePlatform</RootNamespace>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <PackageTags>IsObfuscated</PackageTags>
+    <DefineConstants>$(DefineConstants);RUNTIMEPLATFORM</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <Compile Remove="CodeInjection\**" />
+    <Compile Include="CodeInjection\JavaScript.cs" />
+    <Compile Remove="Web\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Package References -->
+    
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
+    
+    
+    <ProjectReference Include="..\OutSystems.Logging\OutSystems.Logging.csproj" />
+    <ProjectReference Include="..\OutSystems.Logging.Database\OutSystems.Logging.Database.csproj" />
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+    <ProjectReference Include="..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj" />
+    
+    
+    <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" Condition=" '$(TargetFramework)' == 'netstandard2.0' " />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' != 'netstandard2.0' ">
+    <!-- References only for .Net Framework -->
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <ProjectReference Include="..\Application\OutSystems.Application.Session.Persistent\OutSystems.Application.Session.Persistent.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Project References -->
+    <ProjectReference Include="..\Application\OutSystems.Application.Core\OutSystems.Application.Core.csproj" />
+    <ProjectReference Include="..\Application\OutSystems.Application.Scheduling\OutSystems.Application.Scheduling.csproj" />
+    <ProjectReference Include="..\Application\OutSystems.Application.ManifestGeneration\OutSystems.Application.ManifestGeneration.csproj" />
+    <ProjectReference Include="..\Application\OutSystems.Application.Session.Abstractions\OutSystems.Application.Session.Abstractions.csproj" />
+    <ProjectReference Include="..\Application\OutSystems.Application.Session\OutSystems.Application.Session.csproj" />
+    <ProjectReference Include="..\OutSystems.DebuggerClient\OutSystems.DebuggerClient.csproj" />
+    <ProjectReference Include="..\OutSystems.RuntimeSettingsConfiguration\OutSystems.RuntimeSettingsConfiguration.csproj" />
+    <ProjectReference Include="..\OutSystems.ModuleServices\OutSystems.ModuleServices.csproj" />
+  </ItemGroup>
+  
+</Project>

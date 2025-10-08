@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>OutSystems RuntimeCommon</Description>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <DefaultItemExcludes>Properties/**</DefaultItemExcludes>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Compile Update="LabelingResources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>LabelingResources.resx</DependentUpon>
+        </Compile>
+        <EmbeddedResource Update="LabelingResources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>LabelingResources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    
+
+</Project>

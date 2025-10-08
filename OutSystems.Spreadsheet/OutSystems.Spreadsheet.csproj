@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <PackageTags>IsObfuscated</PackageTags>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' Or '$(Configuration)|$(Platform)' == 'Debug_Hybrid|AnyCPU' ">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+
+    
+
+    <ItemGroup>
+        <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+        <PackageReference Include="System.IO.Packaging" Version="4.7.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="GemBox.Spreadsheet">
+        <HintPath>..\ThirdParty\GemboxSpreadSheet\Bin\NET462\GemBox.Spreadsheet.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+</Project>

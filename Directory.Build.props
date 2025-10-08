@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <Company>OutSystems</Company>
+    <Authors>$(Company)</Authors>
+    <Product>OutSystems Platform</Product>
+    <Copyright>Copyright © OutSystems 2020</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Version>11.0.0.0</Version>
+    <FileVersion>11.0.0.0</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+</Project>

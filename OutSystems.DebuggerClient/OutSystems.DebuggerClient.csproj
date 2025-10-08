@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>OutSystems.DebuggerClient</Description>
+    <Configurations>Debug;Release;Debug_Hybrid;Release_Hybrid</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>OutSystems Debugger Client</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' Or '$(Configuration)|$(Platform)' == 'Debug_Hybrid|AnyCPU' ">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU'  or '$(Configuration)|$(Platform)' == 'Release_Hybrid|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Package References-->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Project References-->
+    <ProjectReference Include="..\OutSystems.ModuleServices\OutSystems.ModuleServices.csproj" />
+  </ItemGroup>
+
+  
+
+</Project>

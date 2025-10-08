@@ -1,0 +1,883 @@
+﻿<Project DefaultTargets="Build"
+		 InitialTargets="CopyBinFiles"
+		 xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+		 ToolsVersion="14.0">
+    <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CD3096B6-9D30-4623-AA05-E93CB56CEF09}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ssContactManager</RootNamespace>
+    <AssemblyName>ContactManager</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+	<!-- end of main properties -->
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+      <DefaultItemExcludes>$(DefaultItemExcludes);binClean\**\*.*;bin2Clean\**\*.*</DefaultItemExcludes>
+  </PropertyGroup>
+  <Target Name="CopyBinFiles">
+    <ItemGroup>
+      <_CopyBinItems Include="binClean\**\*.*" />
+      <_CopyBin2Items Include="bin2Clean\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_CopyBinItems)" DestinationFolder="bin\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_CopyBin2Items)" DestinationFolder="bin2\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+
+
+    <Reference Include="System.Net.Http.Formatting, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ThirdParty\WebApi2\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ThirdParty\WebApi2\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ThirdParty\WebApi2\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ThirdParty\WebApi2\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ThirdParty\WebApi2\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <ProjectReference Include="..\Application\OutSystems.Application.Core\OutSystems.Application.Core.csproj">
+      <Project>{CA0360B3-79F7-4250-85C9-FBBA5BA7F9E9}</Project>
+      <Name>OutSystems.Application.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application\OutSystems.Application.Session\OutSystems.Application.Session.csproj">
+      <Project>{9702a3c6-9a67-46ae-8a1d-0d83330f8aaf}</Project>
+      <Name>OutSystems.Application.Session</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application\OutSystems.Application.Session.Abstractions\OutSystems.Application.Session.Abstractions.csproj">
+      <Project>{51204DB2-F66C-4BE8-80C0-E294266C243D}</Project>
+      <Name>OutSystems.Application.Session.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application\OutSystems.Application.Session.Persistent\OutSystems.Application.Session.Persistent.csproj">
+      <Project>{ADF99848-E7EB-4B59-9920-025F43917CA5}</Project>
+      <Name>OutSystems.Application.Session.Persistent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application\OutSystems.Application.Initialization.ASPNet\OutSystems.Application.Initialization.ASPNet.csproj">
+      <Project>{C6CFB41E-D59E-4891-9FBC-C6EFAEF3857E}</Project>
+      <Name>OutSystems.Application.Initialization.ASPNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application\OutSystems.Application.ManifestGeneration\OutSystems.Application.ManifestGeneration.csproj">
+      <Project>{7128F747-1E00-45BB-BF38-CDDDD840E0E1}</Project>
+      <Name>OutSystems.Application.ManifestGeneration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseProviders\iDB2DatabaseProvider\DatabaseProvider.iDB2.csproj">
+      <Project>{C166B554-BB89-4A79-B23A-6D01560A8A9C}</Project>
+      <Name>OutSystems.HubEdition.iDB2DatabaseProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseProviders\MySQLDatabaseProvider\DatabaseProvider.MySQL.csproj">
+      <Project>{B4249E72-A4EE-40C9-BBC3-F7BA2B225B49}</Project>
+      <Name>OutSystems.HubEdition.MySQLDatabaseProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseProviders\OracleDatabaseProvider\DatabaseProvider.Oracle.csproj">
+      <Project>{3EF55125-0623-4DA7-9DA2-236B6B29D1B9}</Project>
+      <Name>OutSystems.HubEdition.OracleDatabaseProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseProviders\PostgreSQLDatabaseProvider\DatabaseProvider.PostgreSQL.csproj">
+      <Project>{88DDE72A-376F-4328-878A-F51A2C63D040}</Project>
+      <Name>OutSystems.HubEdition.PostgreSQLDatabaseProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseProviders\SQLServerDatabaseProvider\DatabaseProvider.SQLServer.csproj">
+      <Project>{F1EF83A7-35CD-4F71-A1A6-C826CEEA7901}</Project>
+      <Name>OutSystems.HubEdition.SQLServerDatabaseProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj">
+      <Project>{A99F44D3-9D76-4AA1-A833-BA2D283AD22E}</Project>
+      <Name>OutSystems.RuntimeCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.RuntimeSettingsConfiguration\OutSystems.RuntimeSettingsConfiguration.csproj">
+      <Project>{AD52EE01-B643-49A4-804C-717E836EAFD7}</Project>
+      <Name>OutSystems.RuntimeSettingsConfiguration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.Logging\OutSystems.Logging.csproj">
+      <Project>{E336743F-1FCE-457E-AEDF-171634F259AF}</Project>
+      <Name>OutSystems.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.Logging.Database\OutSystems.Logging.Database.csproj">
+      <Project>{80FF3B55-516D-4FE3-9384-A2C1791F0CA7}</Project>
+      <Name>OutSystems.Logging.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.Plugin.RabbitMQ\OutSystems.Plugin.RabbitMQ.csproj">
+      <Project>{B3652141-5B17-4EFE-8B88-08D076CB8452}</Project>
+      <Name>OutSystems.Plugin.RabbitMQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.Plugin.FileBased\OutSystems.Plugin.FileBased.csproj">
+      <Project>{2D3A0EA6-B747-4D49-802D-FF71B110E861}</Project>
+      <Name>OutSystems.Plugin.FileBased</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.CachingCommon\OutSystems.CachingCommon.csproj">
+      <Project>{180B1484-90FE-4400-A7A5-50F4C4075CC6}</Project>
+      <Name>OutSystems.CachingCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.RuntimePlatform\OutSystems.RuntimePlatform.csproj">
+      <Project>{EFB0D1E3-076D-4F16-A595-B33BFC5B3F18}</Project>
+      <Name>OutSystems.RuntimePlatform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebWidgets\WebWidgets.csproj">
+      <Project>{0F14B756-1F80-421A-9837-79B64857331C}</Project>
+      <Name>WebWidgets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WidgetsRuntimeAPI\WidgetsRuntimeAPI.csproj">
+      <Project>{F686984C-5ABE-4529-9AE1-4BBF1EA7F93E}</Project>
+      <Name>WidgetsRuntimeAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugin.Widgets.Runtime\OutSystems.Plugin.Widgets.Runtime.csproj">
+      <Project>{E1542247-C244-4EC3-99F1-F39717106886}</Project>
+      <Name>OutSystems.Plugin.Widgets.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.RESTService.Runtime\OutSystems.RESTService.Runtime.csproj">
+      <Project>{86884663-2a9f-4356-a50c-abfcc47a21ae}</Project>
+      <Name>OutSystems.RESTService.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.RESTService.Runtime.Abstractions\OutSystems.RESTService.Runtime.Abstractions.csproj">
+      <Project>{a042f046-657d-41f3-a276-83cc5de929db}</Project>
+      <Name>OutSystems.RESTService.Runtime.Abstractions</Name>
+    </ProjectReference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <Name>Newtonsoft.Json</Name>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\Json.Net\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <Name>Newtonsoft.Json</Name>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\Json.Net\Newtonsoft.Json.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="GemBox.Spreadsheet.dll">
+      <Name>GemBox.Spreadsheet.dll</Name>
+      <HintPath>..\ThirdParty\GemboxSpreadSheet\Bin\NET462\GemBox.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <ProjectReference Include="..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj">
+      <Project>{E451FEC9-2B6B-45A2-8AB9-57196F4557E8}</Project>
+      <Name>DatabaseAbstractionLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.Spreadsheet\OutSystems.Spreadsheet.csproj">
+      <Project>{946A99ED-6A22-4EE2-95F8-3D15DA9488AA}</Project>
+      <Name>OutSystems.Spreadsheet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.ModuleServices\OutSystems.ModuleServices.csproj">
+      <Project>{B7DD99B1-1EEC-4BD5-831C-3DA0DE9970D0}</Project>
+      <Name>OutSystems.ModuleServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OutSystems.DebuggerClient\OutSystems.DebuggerClient.csproj">
+      <Project>{A80294E8-FD62-4FAF-BDE6-6AAD57174646}</Project>
+      <Name>OutSystems.DebuggerClient</Name>
+    </ProjectReference>
+    <!-- DO NOT REMOVE THIS COMMENT: ADD_NEW_PROJECT_DETACH -->
+    
+    
+    <ProjectReference Include="referencesProxy\ContactManagerReferencesProxy.csproj">
+      <Name>ContactManagerReferencesProxy</Name>
+      <Project>{F3BEB653-9E30-4E65-A8BB-3192461CBF8D}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <Reference Include="netstandard" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\OutSystems.NssHTTPRequestHandler.dll">    <SubType>Component</SubType></Content><Content Include="scripts\Extension.HTTPRequestHandler.model.js">    <SubType>Component</SubType></Content><Content Include="bin\OutSystems.NssText.dll">    <SubType>Component</SubType></Content><Content Include="scripts\Extension.Text.model.js">    <SubType>Component</SubType></Content><Content Include="scripts\ServiceCenter.model.js">    <SubType>Component</SubType></Content><Content Include="scripts\ServiceCenter.referencesHealth.js">    <SubType>Component</SubType></Content><Content Include="precache.manifest">    <SubType>Component</SubType></Content><Content Include="CustomHandlers\**">
+    <SubType>Component</SubType>
+</Content>
+<Content Include="appSettings.config">
+    <SubType>Component</SubType>
+</Content>
+
+  </ItemGroup>
+  <ItemGroup>
+	  <Content Include="bin2\hidden_resources\ContactManager\Contacts.xlsx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Theme.Black.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="ThemeBlack.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="Theme.ContactManager.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="ThemeContactManager.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="AppUtils.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="_download.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="_download.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>_download.aspx</DependentUpon>
+	  </Compile>
+	  <Content Include="_osjs.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="_jquery-1-4-2.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Actions.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionPopup_Editor_Close.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionList_Navigation_ResetStartIndex.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionList_SortColumn_SetOrderBy.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionList_SortColumn_GetOrderBy.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionPrivate_HashAdd.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionMenu_GetStyle.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionPrivate_List_Navigation_GetPageNumbers.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionGetApplicationName.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionPrivate_List_Navigation_SaveStartIndex.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionBootstrapContacts.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionList_Navigation_GetStartIndex.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionPrivate_HashGet.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionFeedback_Message.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionInput_FocusFirstInvalid.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionOnSessionStart.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionOnBeginWebRequest.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionGetURLMethod.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionIsAjaxRequest.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionSetCookie.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionRunJavaScript.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionGetPageName.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionStringBuilder_ToString.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionStringBuilder_Create.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionRegex_Search.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Actions\ActionStringBuilder_Append.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="ExtendedActions.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONENRecentItemEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Entities\ENRecentItemEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONENMessageTypeEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Entities\ENMessageTypeEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONENMenuItemEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Entities\ENMenuItemEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONENContactEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Entities\ENContactEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONENApplicationEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Entities\ENApplicationEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONENUserEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Entities\ENUserEntityRecord.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONSTListNavigation_PageNumberStructure.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Structures\STListNavigation_PageNumberStructure.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONSTExcel_ContactsStructure.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Structures\STExcel_ContactsStructure.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="JSONSTFeedback_MessageStructure.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Structures\STFeedback_MessageStructure.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Records.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="AnonymousJsonStructureClasses.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="RecordLists.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="scripts\ContactManager.model.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="SitePropertyKeys.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="Contact_List.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Contact_List.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Contact_List.aspx</DependentUpon>
+	  </Compile>
+	  <Content Include="Contact_Edit.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Contact_Edit.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Contact_Edit.aspx</DependentUpon>
+	  </Compile>
+	  <Content Include="_Default.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Home.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Home.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Home.aspx</DependentUpon>
+	  </Compile>
+	  <Compile Include="FlowMainFlow.ExceptionHandler.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Feedback_Message.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Feedback_Message.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Feedback_Message.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Feedback_Message_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\RichWidgets\Feedback_Message.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Container_Round.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Container_Round.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Container_Round_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\RichWidgets\Container_Round.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_Counter.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_Counter.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_Counter_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\RichWidgets\List_Counter.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\RichWidgets\RemovePopups.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\RemovePopups.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\RemovePopups_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\RichWidgets\RemovePopups.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_SortColumn.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_SortColumn.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_SortColumn.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_SortColumn_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\RichWidgets\List_SortColumn.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_Navigation.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_Navigation.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\List_Navigation_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\RichWidgets\List_Navigation.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Compile Include="Properties\RichWidgets_WebExternalSite7.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Feedback_AjaxWait.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Feedback_AjaxWait.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Feedback_AjaxWait.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\Feedback_AjaxWait_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\RichWidgets\Feedback_AjaxWait.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\RichWidgets\RecentItems.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\RecentItems.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\RichWidgets\RecentItems_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\RichWidgets\RecentItems.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Compile Include="FlowRichWidgets.ExceptionHandler.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Common\Menu.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Common\Menu_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Common\Menu.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Common\Layout_Popup.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Common\Layout_Popup_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Common\Layout_Popup.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="InvalidPermissions.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="InvalidPermissions.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>InvalidPermissions.aspx</DependentUpon>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Common\Layout_Normal.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Common\Layout_Normal_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Common\Layout_Normal.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Common\Footer.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Common\Footer_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Common\Footer.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Common\Layout_Email.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Common\Layout_Email_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Common\Layout_Email.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="InternalError.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="InternalError.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>InternalError.aspx</DependentUpon>
+	  </Compile>
+	  <Compile Include="Properties\Common_WebExternalSite8.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Common\CommonSidebar.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Common\CommonSidebar_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Common\CommonSidebar.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Compile Include="FlowCommon.ExceptionHandler.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Private\jQueryCurvycorners.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryCurvycorners.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryCurvycorners_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Private\jQueryCurvycorners.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Private\NotifyWidget.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\NotifyWidget_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Private\NotifyWidget.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Private\jQueryCookie.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryCookie.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryCookie_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Private\jQueryCookie.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Compile Include="Properties\Private_WebExternalSite4.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Private\jQueryBgiframe.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryBgiframe.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryBgiframe_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Private\jQueryBgiframe.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Private\LoadingMessage.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\LoadingMessage_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Private\LoadingMessage.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Private\jQueryUI.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryUI.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryUI.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryUI_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Private\jQueryUI.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Content Include="Blocks\ContactManager\Private\jQueryDropshadow.ascx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryDropshadow.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Blocks\ContactManager\Private\jQueryDropshadow_precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Blocks\ContactManager\Private\jQueryDropshadow.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+	  </Compile>
+	  <Compile Include="FlowPrivate.ExceptionHandler.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Images.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="img\SpinBlack.gif">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Script.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Feedback_AjaxWait_Background.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\bg_header.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Filter_Gradient.gif">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\bg_body.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Feedback_Close.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Feedback_Success.gif">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Popup_titlebar_close.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Feedback_Warning.gif">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Container_Round.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Feedback_AjaxWait.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\SpinYellow.gif">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\List_SortColumn.gif">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Feedback_Info.gif">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Header_Logo.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\Feedback_Error.gif">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="img\bg_menu_shadow.png">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="_image.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="_image.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>_image.aspx</DependentUpon>
+	  </Compile>
+	  <Content Include="_Basic.css">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Properties\ContactManager.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="_ping.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="_ping.html">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="_WebErrorPage.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="_status.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="_preloader.js">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="AbstractProcess.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="AbstractProcessActivity.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="ActivityExecutor.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="_ActivityHandler.asmx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="_ActivityHandler.asmx.cs">
+      <SubType>Component</SubType>
+      <DependentUpon>_ActivityHandler.asmx</DependentUpon>
+	  </Compile>
+	  <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="TimerBootstrap.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="_TimerHandler.asmx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="_TimerHandler.asmx.cs">
+      <SubType>Component</SubType>
+      <DependentUpon>_TimerHandler.asmx</DependentUpon>
+	  </Compile>
+	  <Compile Include="_RunningInfo.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="_debugger.asmx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Functions.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <EmbeddedResource Include="ContactManagerLanguage.resources">
+      <SubType>Component</SubType>
+      <LogicalName>ContactManagerLanguage.resources</LogicalName>
+	  </EmbeddedResource>
+	  <Content Include="precache.manifest">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="Global.asax">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+	  </Compile>
+	  <Content Include="Web.config">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Compile Include="FeatureTogglesStateDuringCompilation.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="DefaultValues.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Content Include="_CallbackInformation.aspx">
+      <SubType>Component</SubType>
+	  </Content>
+	  <Content Include="scripts\ContactManager.referencesHealth.js">
+      <SubType>Component</SubType>
+	  </Content>
+
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != '' and Exists('$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://BAEHUQ014.outsystemscloud.com/ContactManager</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- end of project -->
+</Project>

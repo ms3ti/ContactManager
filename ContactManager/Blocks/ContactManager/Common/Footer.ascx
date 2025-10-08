@@ -1,0 +1,6 @@
+﻿<%@ Control Language="c#" AutoEventWireup="false" Codebehind="Blocks\ContactManager\Common\Footer.ascx.cs" Inherits="ssContactManager.Flows.FlowCommon.WBlkFooter,ContactManager" TargetSchema="http://schemas.microsoft.com/intellisense/ie5"%>
+<%@ Register TagPrefix="osweb" Namespace="OutSystems.HubEdition.WebWidgets" Assembly="OutSystems.HubEdition.WebWidgets" %>
+<%@ Assembly Name="OutSystems.WidgetsRuntimeAPI" %>
+<%@ Import namespace="ssContactManager" %>
+<%@ Register TagPrefix="widgets" TagName="Kd2oh4wY7bEGnXJaxlB_qYA" Src="..\..\ContactManager\RichWidgets\Feedback_AjaxWait.ascx" %>
+<%# PageStartHook() %><osweb:Container runat="server" id="wt_Container5" anonymous="true" onDataBinding="cnt_Container5_onDataBinding"><osweb:PlaceHolder runat="server"><%# "Built with the OutSystems " %></osweb:PlaceHolder></osweb:Container><osweb:IfPlaceHolder runat="server"><osweb:If runat="server" visible="<%# if_wt_If1() %>"></osweb:If><osweb:If runat="server" visible="<%# !if_wt_If1() %>"><widgets:Kd2oh4wY7bEGnXJaxlB_qYA runat="server" id="wt_WebBlockInstance6" OnEvaluateParameters="webBlck_WebBlockInstance6_onDataBinding" InstanceID="_WebBlockInstance6"></widgets:Kd2oh4wY7bEGnXJaxlB_qYA></osweb:If></osweb:IfPlaceHolder><%# PageEndHook() %>

@@ -1,0 +1,70 @@
+/*
+This file provides the base styles to the default custom handlers pages. 
+The content of this file should not be modified.
+If one intends to customize the styling of the handler pages, that should be done directly in the .aspx files.
+*/
+
+.appOfflineBody {
+	background-image:url('background.gif');
+	background-repeat:repeat-x;
+	font-family: "Lucida Sans Unicode","Lucida Sans","Lucida Grande",Geneva,Verdana,sans-serif;
+}
+
+.errorBox {
+	width: 100%;
+}
+
+.errorTitle {
+	width: 500px;
+	position: relative;
+	top: 110px;
+}
+
+.errorImage {
+	display: inline;
+	vertical-align: middle;
+}
+
+.errorMessageTitle {
+	display: inline;
+	font-size: 22px;
+	color: #444444;
+	margin-left: 10px;
+}
+
+.errorDescription {
+	width: 500px;
+	position: relative;
+	top: 140px;
+	font-size: 14px;
+	color: #333333; 
+}
+
+.errorDetail {
+	width: 500px;
+	position: relative;
+	top: 180px;		
+	font-size: 12px;
+	color: #333333; 
+}
+
+.forbiddenMessage{
+    font-size:50px; 
+    text-align:center
+}
+
+a {
+	color: #1F5BA4;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:visited {
+	text-decoration: none;
+}

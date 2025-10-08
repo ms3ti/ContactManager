@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <Description>OutSystems Application Session Persistent</Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- System References -->
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Package References -->
+    
+    
+    <ProjectReference Include="..\..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+    <ProjectReference Include="..\..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Project References -->
+    <ProjectReference Include="..\OutSystems.Application.Core\OutSystems.Application.Core.csproj" />
+    <ProjectReference Include="..\OutSystems.Application.Session\OutSystems.Application.Session.csproj" />
+  </ItemGroup>
+
+</Project>

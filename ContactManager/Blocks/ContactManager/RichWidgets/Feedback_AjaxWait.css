@@ -1,0 +1,16 @@
+﻿div.Feedback_AjaxWait {
+	color: white;
+	font-size: 11px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	background: url(/ContactManager/img/Feedback_AjaxWait_Background.png?306) no-repeat right top;
+	padding: 3px 13px 1px 1px;
+	z-index: 10000;
+	_background: inherit;/* IE6 */
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/Feedback_AjaxWait_Background.png', sizingMethod='scale');  /* IE6 */
+	_position:absolute; /* IE6 */
+	_top: expression(documentElement.scrollTop+(documentElement.clientHeight-this.clientHeight) ); /* IE6 */
+}
+
+/* ExcludeAllFromPickersOutsideBlock */

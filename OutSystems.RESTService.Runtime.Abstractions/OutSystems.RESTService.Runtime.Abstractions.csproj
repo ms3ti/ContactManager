@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Description>OutSystems RESTService Runtime Abstractions</Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Package References -->
+    
+    
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+    <ProjectReference Include="..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OutSystems.RuntimePlatform\OutSystems.RuntimePlatform.csproj" />
+  </ItemGroup>
+
+</Project>

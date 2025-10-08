@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <AssemblyName>OutSystems.HubEdition.PostgreSQLDatabaseProvider</AssemblyName>
+        <RootNamespace>OutSystems.HubEdition.DatabaseProvider.PostgreSQL</RootNamespace>
+        <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IsPackable>true</IsPackable>
+        <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Include symbol files (*.pdb) in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>bin\$(Configuration)\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Package References -->
+        <PackageReference Include="Npgsql" Version="5.0.18">
+        </PackageReference>
+        
+        
+        <ProjectReference Include="..\..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+        <ProjectReference Include="..\..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Indirect references just to force versions for compatibility -->
+        <PackageReference Include="System.Text.Json" Version="8.0.5" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+    </ItemGroup>
+
+    <!-- Clean Npgsql package dll-->
+    <Target Name="CleanNpgsqlFiles" AfterTargets="Clean" Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+        <Message Text="Deleting Npgsqlfiles in $(OutDir) ..." />
+        <Delete Files="$(OutDir)\Npgsql.dll" />
+        <Delete Files="$(OutDir)\Npgsql.pdb" />
+        <Delete Files="$(OutDir)\Microsoft.Bcl.AsyncInterfaces.dll" />
+        <Delete Files="$(OutDir)\System.Buffers.dll" />
+        <Delete Files="$(OutDir)\System.Memory.dll" />
+        <Delete Files="$(OutDir)\System.Numerics.Vectors.dll" />
+        <Delete Files="$(OutDir)\System.Runtime.CompilerServices.Unsafe.dll" />
+        <Delete Files="$(OutDir)\System.Text.Encodings.Web.dll" />
+        <Delete Files="$(OutDir)\System.Text.Json.dll" />
+        <Delete Files="$(OutDir)\System.Threading.Channels.dll" />
+        <Delete Files="$(OutDir)\System.Threading.Tasks.Extensions.dll" />
+    </Target>
+    
+    
+    
+</Project>

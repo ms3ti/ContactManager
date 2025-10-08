@@ -1,0 +1,5 @@
+﻿<%@ Control Language="c#" AutoEventWireup="false" Codebehind="Blocks\ContactManager\Common\Layout_Popup.ascx.cs" Inherits="ssContactManager.Flows.FlowCommon.WBlkLayout_Popup,ContactManager" TargetSchema="http://schemas.microsoft.com/intellisense/ie5"%>
+<%@ Register TagPrefix="osweb" Namespace="OutSystems.HubEdition.WebWidgets" Assembly="OutSystems.HubEdition.WebWidgets" %>
+<%@ Assembly Name="OutSystems.WidgetsRuntimeAPI" %>
+<%@ Import namespace="ssContactManager" %>
+<%# PageStartHook() %><osweb:Table runat="server" id="wt_Table4" anonymous="true" class="DocumentPopup" style="border-spacing: 0px" cellspacing="0" cellpadding="0" border="0"><osweb:Tr runat="server"><osweb:Td runat="server" id="wt_TableCell1" anonymous="true" onDataBinding="wt_TableCell1_onDataBinding" class="MainPopup"><osweb:PlaceholderContainer runat="server" id="wtMainContent" onDataBinding="wtMainContent_onDataBinding"></osweb:PlaceholderContainer></osweb:Td></osweb:Tr></osweb:Table><%# PageEndHook() %>

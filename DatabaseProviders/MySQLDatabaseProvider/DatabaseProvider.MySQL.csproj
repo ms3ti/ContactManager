@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <AssemblyName>OutSystems.HubEdition.MySQLDatabaseProvider</AssemblyName>
+        <RootNamespace>OutSystems.HubEdition.DatabaseProvider.MySQL</RootNamespace>
+        <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IsPackable>true</IsPackable>
+        <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Include symbol files (*.pdb) in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>bin\$(Configuration)\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Package References -->
+        
+        
+        <ProjectReference Include="..\..\OutSystems.PluginAPI\OutSystems.PluginAPI.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+        <ProjectReference Include="..\..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+        <ProjectReference Include="..\..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+        <PackageReference Include="Google.Protobuf" Version="3.26.1" />
+        <PackageReference Include="MySql.Data" Version="9.0.0" />
+    </ItemGroup>
+
+    <!-- Clean MySql.Data package dlls -->
+    <Target Name="CleanMySqlDataFiles" AfterTargets="Clean">
+        <Message Text="Deleting MySQL.Data files in $(OutDir) ..." />
+        <Delete Files="$(OutDir)\BouncyCastle.Crypto.dll" />
+        <Delete Files="$(OutDir)\Google.Protobuf.dll" />
+        <Delete Files="$(OutDir)\MySql.Data.dll" />
+        <Delete Files="$(OutDir)\Renci.SshNet.dll" />
+    </Target>
+
+
+    
+
+</Project>

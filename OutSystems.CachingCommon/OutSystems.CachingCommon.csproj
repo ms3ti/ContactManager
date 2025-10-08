@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>..\Build\$(Configuration)\Plugins\caching\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Version\PlatformServerAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj"> 
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+     </ProjectReference>
+    <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+﻿div.ListNavigation_Wrapper {
+    float: right;
+}
+
+div.ListNavigation_Wrapper a,
+div.ListNavigation_Wrapper span {
+    text-align: right;
+    vertical-align: middle;
+    margin-left: 6px;
+    font-size: 11px;
+}
+
+a.ListNavigation_PageNumber,
+a.ListNavigation_Previous,
+a.ListNavigation_Next,
+span.ListNavigation_Ellipsis {
+}
+
+span.ListNavigation_CurrentPageNumber {
+    font-weight: bold;
+}
+
+span.ListNavigation_DisabledPrevious,
+span.ListNavigation_DisabledNext {
+    color: gray;
+}
+
+/* ExcludeAllFromPickersOutsideBlock */

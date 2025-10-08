@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04CA79C7-34BE-4BB8-AF2B-BF9547CFEB22}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OutSystems.Plugin.SAP</RootNamespace>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AssemblyName>OutSystems.Plugin.SAP.Runtime</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="sapnco">
+      <HintPath>..\..\ThirdParty\SAP\sapnco.dll</HintPath>
+    </Reference>
+    <Reference Include="sapnco_utils">
+      <HintPath>..\..\ThirdParty\SAP\sapnco_utils.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj"> 
+      <Private>False</Private>
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+     </ProjectReference>
+	<ProjectReference Include="..\OutSystems.RuntimePlatform\OutSystems.RuntimePlatform.csproj"> 
+		<Private>False</Private>
+		<ExcludeAssets>runtime</ExcludeAssets>
+		<PrivateAssets>all</PrivateAssets>
+	 </ProjectReference>
+    <ProjectReference Include="..\Plugin.SAP\RuntimeAPI\OutSystems.SAP.API.csproj">
+      <Project>{68B10F56-5FF4-4817-A8E6-220656D1AB0C}</Project>
+      <Name>OutSystems.SAP.API</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Version\PlatformServerAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SapCallbackHandler.cs" />
+    <Compile Include="SapCallContext.cs" />
+    <Compile Include="SapConfiguration.cs" />
+    <Compile Include="SapException.cs" />
+    <Compile Include="SapTransactionHandler.cs" />
+    <Compile Include="SapExceptionHandler.cs" />
+    <Compile Include="SapInputHandler.cs" />
+    <Compile Include="SapOutputHandler.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

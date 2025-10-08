@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <AssemblyName>OutSystems.HubEdition.SQLServerDatabaseProvider</AssemblyName>
+        <RootNamespace>OutSystems.HubEdition.DatabaseProvider.SqlServer</RootNamespace>
+        <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IsPackable>true</IsPackable>
+        <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Include symbol files (*.pdb) in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>bin\$(Configuration)\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Compile Remove="ApplicationDatabaseConfiguration.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Package References -->
+        
+        
+        <ProjectReference Include="..\..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+        <ProjectReference Include="..\..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="System.Configuration" />
+    </ItemGroup>
+
+    
+
+</Project>

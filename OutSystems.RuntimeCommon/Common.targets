@@ -1,0 +1,71 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<!--
+    Not working consistently due to https://github.com/dotnet/sdk/issues/2751
+    Use <GenerateAssemblyInfo>false</GenerateAssemblyInfo> and AssemblyInfo/CommonAssemblyInfo files instead. -->
+
+  <PropertyGroup>
+    <!-- <GenerateAssemblyInfo>false</GenerateAssemblyInfo> -->
+    <Company>OutSystems</Company>
+	<Authors>$(Company)</Authors>
+    <Product>OutSystems Platform</Product>
+    <Copyright>Copyright © OutSystems 2018</Copyright>
+	<PackageVersion>11.5.0.45040</PackageVersion>
+    <Version>11.5.0.45040</Version>
+    <FileVersion>$(Version)</FileVersion>
+    <!-- <InformationalVersion>$(FileVersion)+$(TargetFramework)</InformationalVersion> -->
+    <NeutralLanguage>en</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ESpaceRoot Condition="'$(ESpaceRoot)' == ''">$(MSBuildThisFileDirectory)..\</ESpaceRoot>
+    <local-nodejs-path>$(ESpaceRoot)Commons\ThirdParty\nodejs\</local-nodejs-path>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <local-nodejs-tsc>$(local-nodejs-path)tsc</local-nodejs-tsc>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TypeScriptBuildDependsOn>BuiltProjectOutputGroupDependencies;TypeScriptPrepareItems</TypeScriptBuildDependsOn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DefineConstants Condition=" '$(TargetFrameworkVersion)' == 'v4.6.1' ">$(DefineConstants);RUNNING_ON_NET_4_6_1</DefineConstants>
+    <DefineConstants Condition=" '$(TargetFrameworkVersion)' == 'v4.7.2' ">$(DefineConstants);RUNNING_ON_NET_4_7_2</DefineConstants>
+    <DefineConstants Condition=" '$(TargetFrameworkVersion)' == 'netstandard2.0' ">$(DefineConstants);NETCORE;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <Target Name="TypeScriptPrepareItems">
+    <!-- override this target to add generated .ts and .d.ts files
+         to the TypeScriptCompile and TypeScriptDTSFile collections
+         -->
+  </Target>
+
+  <Target Name="TypeScriptBuild"
+          DependsOnTargets="$(TypeScriptBuildDependsOn)"
+          Inputs="@(TypeScriptCompile);@(TypeScriptDTSFile);@(TypeScriptTSConfig);@(BuiltProjectOutputGroupDependency);@(TypeScriptExtraDependencies)"
+          Outputs="@(TypeScriptCompile -> '%(rootdir)%(directory)%(filename).js')">
+    <Exec Command="&quot;$(local-nodejs-tsc)&quot; -p %(TypeScriptTSConfig.FullPath)" />
+    <ItemGroup>
+      <TypeScriptBuiltItems Include="@(TypeScriptCompile -> '%(rootdir)%(directory)%(filename).js')" />
+    </ItemGroup>
+  </Target>
+
+  <!--
+     After a T4 transformation occurs, one needs to include the transformed files, taking into account that the generated files have FullPath
+	 while the ones in @(Compile) have RelativePath.
+  -->
+  <Target Name="IncludeTransformedFiles">
+    <ItemGroup>
+        <CompileList Include="@(Compile->'%(FullPath)')" />
+    </ItemGroup>
+    <ItemGroup>
+       <CompileList Include="@(GeneratedFiles)" Exclude="@(CompileList)" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="@(Compile)" />
+        <Compile Include="@(CompileList)" />
+    </ItemGroup>
+  </Target>
+
+</Project>

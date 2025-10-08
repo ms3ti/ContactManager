@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>OutSystems.RESTService</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <Description>Compiler RESTService Runtime</Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  
+
+  <ItemGroup>
+    <!-- System References -->
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Package References -->
+    
+    
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.3.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.WebHost" Version="5.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+    <ProjectReference Include="..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Project References -->
+    <ProjectReference Include="..\Application\OutSystems.Application.Core\OutSystems.Application.Core.csproj" />
+    <ProjectReference Include="..\Application\OutSystems.Application.Session.Abstractions\OutSystems.Application.Session.Abstractions.csproj" />
+    <ProjectReference Include="..\Application\OutSystems.Application.Session.Persistent\OutSystems.Application.Session.Persistent.csproj" />
+    <ProjectReference Include="..\Application\OutSystems.Application.Session\OutSystems.Application.Session.csproj" />
+    <ProjectReference Include="..\OutSystems.DebuggerClient\OutSystems.DebuggerClient.csproj" />
+    <ProjectReference Include="..\OutSystems.RESTService.Runtime.Abstractions\OutSystems.RESTService.Runtime.Abstractions.csproj" />
+    <ProjectReference Include="..\OutSystems.RuntimePlatform\OutSystems.RuntimePlatform.csproj" />
+  </ItemGroup>
+
+</Project>

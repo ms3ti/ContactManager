@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)'=='Debug|AnyCPU' ">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- System References -->
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Package References -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <ProjectReference Include="..\..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+    <ProjectReference Include="..\..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OutSystems.Application.Core\OutSystems.Application.Core.csproj" />
+    <ProjectReference Include="..\OutSystems.Application.Session.Persistent\OutSystems.Application.Session.Persistent.csproj" />
+    <ProjectReference Include="..\..\OutSystems.RuntimePlatform\OutSystems.RuntimePlatform.csproj" />
+  </ItemGroup>
+
+  
+
+</Project>

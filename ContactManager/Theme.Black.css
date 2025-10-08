@@ -1,0 +1,634 @@
+﻿/************** HTML Tags **************/
+
+html, body, div, span, 
+form, table, tbody, thead {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background: url("/ContactManager/img/bg_body.png?306") repeat scroll 0 0 #FAFAFA;
+    margin: 0px;
+}
+
+body, select, textarea, input {
+    font-size: 14px;
+    font-family: 'lucida grande', 'lucida sans unicode', 'lucida sans', 'helvetica nueue', arial, helvetica, sans-serif;
+    color: #333333;
+}
+
+th {
+    text-align: left;
+}
+
+.Bold {
+    display: inline;
+    font-weight: bold;
+}
+
+.Italic {
+    display: inline;
+    font-style: italic;
+}
+
+.Underline {
+    display: inline;
+    text-decoration: underline;
+}
+
+input, select, textarea {
+    padding: 3px;
+    margin: 0;
+}
+
+textarea {
+    overflow: auto;
+}
+
+input[disabled='disabled'] {
+    background: ButtonFace;
+    cursor: text;
+}
+
+input[type='text'][readonly]{
+    background: #EAEAEA;
+}
+
+input[type=radio],
+input[type=checkbox] {
+    margin: 3px 0px;
+    vertical-align: middle;
+}
+
+input[type=file] {
+    vertical-align: bottom;
+}
+
+table {
+    border-collapse: separate;
+    empty-cells: show;
+}
+
+a,
+a:link,
+a:visited {
+    color: #1F5BA4;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #FFC;
+    color: black;
+    text-decoration: underline;
+}
+
+a[disabled='disabled'], 
+a[disabled='disabled']:hover {
+    background-color: transparent;
+    color: ButtonShadow;
+    text-decoration: none;
+}
+
+img {
+    vertical-align: text-bottom;
+    border-width: 0px;
+}
+
+/************** Widgets **************/
+
+.Button {
+    text-align: center;
+    margin-right: 3px;
+    padding: 3px 6px;
+ }
+
+.Button[disabled='disabled'] {
+    color: ButtonShadow;
+    cursor: text;
+}
+
+table.EditRecord {
+    margin-bottom: 8px;
+    margin-top: 4px;
+}
+
+td.EditRecord_Caption {
+    color: #444444;
+    font-size: 11px;
+    padding: 7px 7px 7px 0px;
+    font-weight: bold;
+    vertical-align: top;
+    white-space: nowrap;
+    text-align: left;
+}
+
+td.EditRecord_Value {
+    padding: 3px;
+    vertical-align: middle;
+}
+
+table.ShowRecord {}
+
+td.ShowRecord_Caption {
+    color: #444444;
+    font-size: 11px;
+    padding: 6px 5px 5px 5px;
+    font-weight: bold;
+    vertical-align: top;
+    white-space: nowrap;
+    text-align: left;
+}
+
+td.ShowRecord_Value {
+    padding: 5px 5px 5px 8px;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+table.TableRecords {
+    border-top: 1px solid white;    
+}
+
+th.TableRecords_Header {
+    color: #666666;
+    background: #EAEAEA url(/ContactManager/img/Bar_Gradient.png?306) repeat-x top;
+    _background: #EAEAEA;  /* IE6 */
+    _filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src='img/Bar_Gradient.png', sizingMethod='scale');  /* IE6 */
+    white-space: nowrap;
+    line-height: 18px;
+    padding: 4px 6px 4px 6px;
+    border-right: 1px solid white;
+}
+
+th.TableRecords_Header a,
+th.TableRecords_Header a:link,
+th.TableRecords_Header a:visited {
+    color: #666666;
+}
+
+table.TableRecords>tbody>tr:hover {
+    background-color: #F3F8FF;
+}
+
+td.TableRecords_OddLine,
+td.TableRecords_EvenLine {
+    line-height: 18px;
+    margin: 1px 1px 1px 1px;
+    padding: 6px;
+    border-bottom: 1px dotted #cccccc;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+div.TableRecords_Wrapper {}
+
+div.TableRecords_TopNavigation {
+    padding: 0px;
+    border-top: 1px solid white;
+    border-right: 0px none white;
+    border-bottom: 0px solid white;
+    border-left: 0px none white;
+    _height: 1%;  /* IE6 */
+    display: block;
+    *display: inline-block;
+}
+
+div.TableRecords_TopNavigation:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.TableRecords_Actions,
+.TableRecords_Footer {
+    font-size: 12px;
+    vertical-align: middle;
+    float: left;
+    padding: 1px;
+}
+
+div.TableRecords_BottomNavigation {
+    padding-top: 2px;
+    _height: 1%;  /* IE6 */
+    display: block;
+    *display: inline-block;
+}
+
+div.TableRecords_BottomNavigation:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.TableRecords_ItemLabel {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+div.Filters_Wrapper {
+    background: #dddddd url(/img/Filter_Gradient.gif?306) repeat-x top;
+    padding: 4px;
+}
+
+table.Filters {
+    white-space: nowrap;
+}
+
+table.Filters td {
+    padding: 2px 0px 2px 4px;
+    vertical-align: middle;
+}
+
+table.Filters td img {
+    vertical-align: middle;
+}
+
+span.ListRecords {}
+
+img.RecordPicture {
+    display: block;
+    float: left;
+    width: 120px;
+    border: 1px solid #EAEAEA;
+}
+
+div.RecordPicture_Wrapper {
+    float: left;
+}
+
+div.RecordPicture_Wrapper img.RecordPicture {
+    float: none;
+}
+
+table.TableRecords img.RecordPicture {
+    width: auto;
+    height: 40px;
+    float: none;
+}
+
+/* ExcludeFromPickersOutsideBlock: TableRecords_Wrapper, TableRecords_TopNavigation, TableRecords_Actions,
+                                   TableRecords_BottomNavigation, TableRecords_Footer, Filters_Wrapper, Filters, 
+                                   RecordPicture_Wrapper, Record_Picture */
+
+
+
+/************** RichWidgets **************/
+
+div.Popup .ui-dialog .ui-dialog-titlebar,
+div.Popup.ui-dialog .ui-dialog-titlebar,
+ul.ui-autocomplete a.ui-state-hover,
+div.calendar tbody .rowhilite td.selected,
+div.calendar tbody .rowhilite th.selected,
+div.calendar tbody td.selected,
+div.calendar tbody th.selected {
+    background-color: #434343;
+}
+
+/* ExcludeFromPickersOutsideBlock: calendar, Popup, ui-dialog, ui-dialog-titlebar, 
+                                   ui-autocomplete, ui-state-hover, rowhilite, selected */
+
+
+/************** Validations **************/
+
+input.Prompt, textarea.Prompt {
+    color: #BBBBBB;
+}
+
+input.Not_Valid,
+select.Not_Valid,
+textarea.Not_Valid {
+    border: 2px solid #BF1601;
+}
+
+span.ValidationMessage {
+    color: white;
+    font-size: 11px;
+    position: absolute;
+    padding: 6px;
+    font-weight: bold;
+    background: #BF1601;
+    max-width: 300px;
+    z-index: 100;
+}
+
+table.DocumentPopup span.ValidationMessage {
+  position:relative;
+}
+
+span.InputMandatorySymbol {
+    position: absolute;
+    color: #BF1601;
+    padding: 3px;
+    content: '*';
+    font-size: 12px;
+}
+
+/************** Layout **************/
+
+table.Document, table.DocumentPopup {
+    width: 100%;
+}
+
+td.Main,
+td.MainWithRightSidebar,
+td.MainWithLeftSidebar {
+    background-color: white;
+    padding: 0px 16px 14px 16px;
+    vertical-align: top;
+    height: 90%;
+    width: 75%;
+    min-width: 700px;
+}
+
+td.MainWithRightSidebar {
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.246094) 2px 3px 5px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.246094) 2px 3px 5px;
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;    
+}
+
+td.MainWithLeftSidebar {
+    border-left: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.246094) 2px 3px 5px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.246094) 2px 3px 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+}
+
+td.MainPopup {
+    padding: 0px 16px 14px 16px;
+    vertical-align: top;
+    background-color: white;
+}
+
+div.Title {
+    margin-top: 20px;
+    margin-bottom: 16px;
+    font-size: 28px;
+}
+
+div.Title_Links {
+    font-size: 12px;
+}
+
+div.MainContent {
+    min-height: 400px;
+}
+
+td.MainPopup div.MainContent {
+    min-height: auto;
+    
+}
+
+td.Sidebar {
+    padding: 30px;
+    min-width: 200px;    
+}
+
+div.Sidebar_Heading {
+    color: #444444;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+div.Sidebar_Block, 
+div.Sidebar_BlockActions {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    
+}
+
+div.Sidebar_Block a,
+div.Sidebar_Block a:link,
+div.Sidebar_Block a:visited {
+    color: #444444;
+    white-space: nowrap;
+}
+
+div.Sidebar a.Link_Red {
+    color: #cc0000;
+}
+
+/* ExcludeFromPickersOutsideBlock: Document, DocumentPopup, Main, MainWithRightSidebar, MainWithLeftSidebar, MainPopup, Title, MainContent, Sidebar */
+
+/************** Header & Footer **************/
+
+div.Header {
+    background: url("/ContactManager/img/bg_header.png?306") repeat-x scroll left top #444444;
+    min-height: 93px;
+}
+
+table.Header_Title {
+    vertical-align: middle;
+    height: 69px;
+}
+
+table.Header_Title a,
+table.Header_Title a:link,
+table.Header_Title a:visited,
+table.Header_Title a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+table.Header_Title a:hover {
+    background-color: transparent;
+}
+
+td.Header_Title_Image {
+    padding-left: 10px;
+    width:34px;    
+}
+td.Header_Title_Image img {
+    max-height:54px;
+}
+
+td.Header_Title_Application {
+    font-size: 24px;
+    padding-left:5px;
+    vertical-align: middle;
+}
+
+td.Header_Title_Spacer {
+}
+
+div.Login_Info {
+    background: url(/ContactManager/img/Header_Greetings.png?306) left bottom no-repeat;
+    _background-image: none;  /* IE6 */
+    _background-color: white;  /* IE6 */
+    _border: 1px solid #CCCCCC;  /* IE6 */
+    float: right;
+    font-size: 12px;
+    padding: 4px 18px 6px 8px;
+}
+
+div.Footer {
+    color: #666666;
+    font-size: 11px;    
+    padding: 10px 0px;
+}
+
+/* ExcludeFromPickersOutsideBlock: Header, Header_Title, Header_Title_Application, Header_Title_Image, 
+                                   Header_Title_Spacer, Login_Info, Login_Image, Footer */
+
+/************** Menu **************/
+
+div.Menu_Container {
+        
+}
+
+div.Header div.Menu_Container {
+    
+}
+
+div.Menu_Container a:hover {
+    background-color: transparent;
+}
+
+div.Menu_TopMenus { 
+    margin-left: 10px;
+    *height: 27px;
+    _border-left: 1px solid #cccccc;  /* IE6 */
+    
+        
+} 
+
+div.Menu_TopMenu { 
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: -moz-inline-box; /*FF2*/
+    display: inline-block;
+    *float: left; 
+    white-space: nowrap; 
+    font-size: 14px;
+    margin-left: -1px;
+    margin-right: 10px;
+    padding: 4px 8px 3px;
+    border-color: #666666 #666666 #AAAAAA;
+    border-style: solid;
+    border-width: 1px;
+    background: url("/ContactManager/img/bg_menu_shadow.png?306") repeat-x scroll left bottom #EAEAEA;
+    clear: right;
+    margin-bottom: -2px\0/;
+} 
+
+div.Menu_TopMenu a:link,
+div.Menu_TopMenu a:visited,
+div.Menu_TopMenu a {
+    color: #444444;
+    text-decoration: none; 
+}
+
+div.Menu_TopMenu:hover {
+    background-color: white;
+}
+
+div.Menu_TopMenuActive {
+    background-color: #FFFFFF;
+    border-color: #666666 #666666 #FFFFFF;
+    background-image: none;
+}
+
+div.Menu_TopMenu:hover a,
+div.Menu_TopMenuActive a, 
+div.Menu_TopMenuActive a:link,
+div.Menu_TopMenuActive a:visited {
+    color: #444;
+}
+
+/* ExcludeFromPickersOutsideBlock: Menu_Container, Menu_TopMenus, Menu_TopMenu, Menu_TopMenuActive */
+
+/************** Other Classes **************/
+
+.Heading1 {
+    font-size: 22px;
+    padding-top: 20px;
+    padding-right: 5px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    border-bottom: 2px dotted #CCCCCC;
+    text-align: left;
+    padding-bottom: 2px;
+}
+
+.Heading2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #444444;
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+
+.Heading3 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
+    padding-top: 8px;
+    padding-bottom: 2px;
+}
+
+.Text_Note {
+    color: #888888;
+    font-size: 11px;
+}
+
+.LastModified {
+    color: #888888;
+    font-weight: normal;
+    font-Style: italic;
+    font-size: 11px;
+}
+
+.Text_Error {
+    color: #c7331f;
+}
+
+.Text_NoWrap {
+    white-space: nowrap;
+}
+
+.Text_Justified {
+    text-align: justify;
+}
+
+a.Link_Black,
+a.Link_Black:link,
+a.Link_Black:visited {
+    color: black;
+}
+
+a.Link_Red,
+a.Link_Red:link,
+a.Link_Red:visited {
+    color: #CC0000;
+}
+
+.OnRowHover {
+    visibility: hidden;
+}
+
+table.TableRecords>tbody>tr:hover .OnRowHover {
+    visibility: visible;
+}
+
+/* iPad [portrait + landscape] */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .OnRowHover {
+    visibility: visible;
+  }
+}
+
+/* iPhone [portrait + landscape] */
+@media only screen and (max-device-width: 480px) {
+  .OnRowHover {
+    visibility: visible;
+  }
+}

@@ -1,0 +1,137 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F3BEB653-9E30-4E65-A8BB-3192461CBF8D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ssContactManager</RootNamespace>
+    <AssemblyName>ContactManagerReferencesProxy</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core">
+      <Name>System.Core</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    
+    <Reference Include="System.Web.Http">
+      <Name>System.Web.Http</Name>
+      <HintPath>..\..\ThirdParty\WebApi2\System.Web.Http.dll</HintPath>
+    </Reference>
+    
+    
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+
+    
+    <ProjectReference Include="..\..\Application\OutSystems.Application.Core\OutSystems.Application.Core.csproj">
+      <Project>{CA0360B3-79F7-4250-85C9-FBBA5BA7F9E9}</Project>
+      <Name>OutSystems.Application.Core</Name>
+    </ProjectReference>
+	<ProjectReference Include="..\..\Application\OutSystems.Application.ManifestGeneration\OutSystems.Application.ManifestGeneration.csproj">
+		<Project>{7128F747-1E00-45BB-BF38-CDDDD840E0E1}</Project>
+		<Name>OutSystems.Application.ManifestGeneration</Name>
+	</ProjectReference>
+    <ProjectReference Include="..\..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj">
+      <Project>{A99F44D3-9D76-4AA1-A833-BA2D283AD22E}</Project>
+      <Name>OutSystems.RuntimeCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OutSystems.RuntimePlatform\OutSystems.RuntimePlatform.csproj">
+      <Project>{EFB0D1E3-076D-4F16-A595-B33BFC5B3F18}</Project>
+      <Name>OutSystems.RuntimePlatform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OutSystems.RESTService.Runtime.Abstractions\OutSystems.RESTService.Runtime.Abstractions.csproj">
+      <Project>{a042f046-657d-41f3-a276-83cc5de929db}</Project>
+      <Name>OutSystems.RESTService.Runtime.Abstractions</Name>
+    </ProjectReference>
+    
+    <ProjectReference Include="..\..\WebWidgets\WebWidgets.csproj">
+      <Project>{0F14B756-1F80-421A-9837-79B64857331C}</Project>
+      <Name>WebWidgets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WidgetsRuntimeAPI\WidgetsRuntimeAPI.csproj">
+      <Project>{F686984C-5ABE-4529-9AE1-4BBF1EA7F93E}</Project>
+      <Name>WidgetsRuntimeAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Plugin.Widgets.Runtime\OutSystems.Plugin.Widgets.Runtime.csproj">
+      <Project>{E1542247-C244-4EC3-99F1-F39717106886}</Project>
+      <Name>OutSystems.Plugin.Widgets.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OutSystems.RESTService.Runtime\OutSystems.RESTService.Runtime.csproj">
+      <Project>{86884663-2a9f-4356-a50c-abfcc47a21ae}</Project>
+      <Name>OutSystems.RESTService.Runtime</Name>
+    </ProjectReference>
+    
+    <ProjectReference Include="..\..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj">
+      <Project>{E451FEC9-2B6B-45A2-8AB9-57196F4557E8}</Project>
+      <Name>DatabaseAbstractionLayer</Name>
+    </ProjectReference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <Name>Newtonsoft.Json</Name>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\Json.Net\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    
+    
+        <Reference Include="netstandard" />
+    <Reference Include="OutSystems.NssHTTPRequestHandler.dll">
+      <Name>OutSystems.NssHTTPRequestHandler.dll</Name>
+      <HintPath>..\bin\OutSystems.NssHTTPRequestHandler.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+        <Reference Include="OutSystems.NssText.dll">
+      <Name>OutSystems.NssText.dll</Name>
+      <HintPath>..\bin\OutSystems.NssText.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    
+  </ItemGroup>
+  <ItemGroup>
+    	  <Compile Include="Extension_HTTPRequestHandler_proxy.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Include="Extension_Text_proxy.cs">
+      <SubType>Code</SubType>
+	  </Compile>
+
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

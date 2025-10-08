@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>OutSystems.RuntimeSettingsConfiguration</Description>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Configurations>Debug;Release;Debug_Hybrid;Release_Hybrid</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' Or '$(Configuration)|$(Platform)' == 'Debug_Hybrid|AnyCPU' ">
+    <DefineConstants>DEBUG;TRACE;RUNTIMESETTINGSCONFIGURATION</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU'  or '$(Configuration)|$(Platform)' == 'Release_Hybrid|AnyCPU'">
+    <DefineConstants>TRACE;RUNTIMESETTINGSCONFIGURATION</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Package References -->
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+  </ItemGroup>
+
+  
+
+</Project>

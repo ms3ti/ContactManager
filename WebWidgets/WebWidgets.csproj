@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>OutSystems.HubEdition.WebWidgets</AssemblyName>
+    <RootNamespace>OutSystems.HubEdition.WebWidgets</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <OutputPath>..\Build\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Version\PlatformServerAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+    <Compile Update="OSPage.cs" />
+    <Compile Update="OSPageViewState.cs" />
+    <Compile Update="OSUserControl.cs" />
+    <Compile Update="OSPageViewStateCompressed.cs" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <!-- System References -->
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Package References -->
+    
+    
+    
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+    <ProjectReference Include="..\OutSystems.RuntimePlatform\OutSystems.RuntimePlatform.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Project References -->
+    <ProjectReference Include="..\WidgetsRuntimeAPI\WidgetsRuntimeAPI.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(ProjectDir)..\OutSystems.RuntimeCommon\Common.targets" />
+
+</Project>

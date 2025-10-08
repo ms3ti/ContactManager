@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <AssemblyName>OutSystems.HubEdition.iDB2DatabaseProvider</AssemblyName>
+        <RootNamespace>OutSystems.HubEdition.DatabaseProvider.iDB2</RootNamespace>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+        <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IsPackable>true</IsPackable>
+        <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Include symbol files (*.pdb) in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>bin\$(Configuration)\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <RuntimeIdentifier>win</RuntimeIdentifier>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="IBM.Data.DB2.iSeries">
+            <HintPath>lib\IBM.Data.DB2.iSeries.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Configuration" />
+    </ItemGroup>
+
+    <!-- Clean driver dlls -->
+    <Target Name="CleanCopiedFiles" AfterTargets="Clean">
+        <Message Text="Deleting copied files in $(OutDir) ..." />
+        <Delete Files="$(OutDir)\IBM.Data.DB2.iSeries.dll" />
+        <Delete Files="$(OutDir)\IBM.Data.DB2.iSeries.xml" />
+    </Target>
+
+    <ItemGroup>
+        
+        
+        <ProjectReference Include="..\..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+        <ProjectReference Include="..\..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+    </ItemGroup>
+    
+    <Target Name="AddLibFiles" AfterTargets="PostBuildEvent">
+        <Copy SourceFiles="lib\IBM.Data.DB2.iSeries.dll" DestinationFolder="$(OutDir)" />
+    </Target>
+
+    
+
+</Project>

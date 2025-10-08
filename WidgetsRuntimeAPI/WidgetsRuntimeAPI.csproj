@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>OutSystems.WidgetsRuntimeAPI</RootNamespace>
+    <AssemblyName>OutSystems.WidgetsRuntimeAPI</AssemblyName>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <OutputPath>..\Build\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Version\PlatformServerAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- System References -->
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Package References -->
+    <ProjectReference Include="..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj" />
+    <ProjectReference Include="..\OutSystems.RuntimePlatform\OutSystems.RuntimePlatform.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(ProjectDir)..\OutSystems.RuntimeCommon\Common.targets" />
+
+</Project>

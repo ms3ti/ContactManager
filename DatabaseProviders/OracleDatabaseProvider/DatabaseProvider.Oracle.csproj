@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <AssemblyName>OutSystems.HubEdition.OracleDatabaseProvider</AssemblyName>
+        <RootNamespace>OutSystems.HubEdition.DatabaseProvider.Oracle</RootNamespace>
+        <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IsPackable>true</IsPackable>
+        <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Include symbol files (*.pdb) in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>bin\$(Configuration)\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Package References -->
+        
+        
+        <ProjectReference Include="..\..\OutSystems.RuntimeCommon\OutSystems.RuntimeCommon.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+        <ProjectReference Include="..\..\OutSystems.HubEdition.DatabaseAbstractionLayer\DatabaseAbstractionLayer.csproj"> 
+            <Private>False</Private>
+            <ExcludeAssets>runtime</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+         </ProjectReference>
+        <!-- Use the .net framework 4.7.2 driver to suport snowflakes with file configurations (ex: Oracle wallet, performance counters) -->
+        <PackageReference Include="Oracle.ManagedDataAccess" Version="19.26.0" />
+    </ItemGroup>
+
+    <!-- Indirect nugets may be explicitly listed to force version raises-->
+    <ItemGroup>
+        <PackageReference Include="System.Formats.Asn1" Version="8.0.1" />
+        <PackageReference Include="System.Text.Json" Version="8.0.5" />
+
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="System.Configuration" />
+    </ItemGroup>
+
+    <!-- Clean Oracle.ManagedDataAccess.Core package dll-->
+    <Target Name="CleanOracleDataFiles" AfterTargets="Clean">
+        <Message Text="Deleting Oracle.Data files in $(OutDir) ..." />
+        <Delete Files="$(OutDir)\Oracle.ManagedDataAccess.dll" />
+    </Target>
+
+    
+
+</Project>
